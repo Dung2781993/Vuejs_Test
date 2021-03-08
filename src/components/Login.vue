@@ -112,6 +112,7 @@ export default {
                   type: 'success',
               });
               localStorage.setItem('user-token', response.data.account_auth_token) // store the token in localstorage
+              localStorage.setItem('auth_token', response.data.portals[0].auth_token) // store the token in localstorage
               this.$router.push({ name: "contactList" });
             }   
         })
