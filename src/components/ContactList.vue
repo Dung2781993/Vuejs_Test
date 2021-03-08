@@ -42,7 +42,7 @@
         >
           <div class="page-content-actions">
             <div class="btn-group btn-group-flat">
-              <b-button variant="success">Tạo liên hệ</b-button>
+              <b-button v-on:click="addContact" variant="success">Tạo liên hệ</b-button>
             </div>
           </div>
           <!-- Contacts -->
@@ -73,6 +73,11 @@ export default {
         }
       }
       axios.get("https://test-portal.stringeex.com/v1/contact?limit=5&page=1&sort_by=created&sort_order=desc",config).then(response => this.items = response.data.data.rows);
+  },
+  methods : {
+    addContact() {
+      this.$router.push({ name: "addContact" });
+    }
   }
 };
 </script>

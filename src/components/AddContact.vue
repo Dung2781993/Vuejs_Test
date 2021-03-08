@@ -145,7 +145,10 @@ export default {
   },
   methods: {
     resetForm() {
-
+        this.name = null;
+        this.title = null;
+        this.company = null;
+        this.description = null;
     },
     submitForm() {
       if(this.name === null) {
@@ -161,7 +164,6 @@ export default {
           'X-STRINGEE-AUTH': authToken
         }
       }
-     
       axios
         .post("https://api-test.stringeex.com/v1/contact", params, config).then(response => {
             let message = response.data.msg;
