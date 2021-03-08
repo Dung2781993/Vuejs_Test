@@ -1,4 +1,5 @@
 <template>
+<div class="animsition page-login-v3 layout-full" style="animation-duration: 800ms; opacity: 1;">
   <div
     class="page vertical-align text-center"
     data-animsition-in="fade-in"
@@ -70,6 +71,7 @@
       </footer>
     </div>
   </div>
+</div>
 </template>
 <script>
 import axios from "axios";
@@ -79,7 +81,7 @@ import 'vue-toast-notification/dist/theme-sugar.css';
 
 Vue.use(VueToast);
 export default {
-  name: "Login",
+  name: "login",
   data() {
     return {
       email: null,
@@ -109,8 +111,9 @@ export default {
                   message: 'Login Successfully',
                   type: 'success',
               });
-            }
-            
+              localStorage.setItem('user-token', response.data.account_auth_token) // store the token in localstorage
+              this.$router.push({ name: "contactList" });
+            }   
         })
         .catch(error => {
             Vue.$toast.open({
